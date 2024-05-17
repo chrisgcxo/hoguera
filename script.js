@@ -3,7 +3,7 @@ document.getElementById("commentForm").addEventListener("submit", function(event
   const commentInput = document.getElementById("commentInput").value;
 
   // Enviar comentario al archivo 'comments.txt' en GitHub
-  fetch("https://raw.githubusercontent.com/tu_usuario/tu_repositorio/main/comments.txt", {
+  fetch("https://raw.githubusercontent.com/chrisgcxi/hoguera/main/comments.txt", {
     method: "POST",
     body: JSON.stringify({ comment: commentInput })
   })
@@ -19,7 +19,7 @@ document.getElementById("commentForm").addEventListener("submit", function(event
 
 function loadComments() {
   // Solicitar comentarios directamente desde el archivo 'comments.txt' en GitHub
-  fetch("https://raw.githubusercontent.com/tu_usuario/tu_repositorio/main/comments.txt")
+  fetch("https://raw.githubusercontent.com/chrisgcxo/hoguera/main/comments.txt")
     .then(response => response.text())
     .then(data => {
       // Dividir el texto en líneas y filtrar las líneas vacías
