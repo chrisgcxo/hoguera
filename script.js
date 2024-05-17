@@ -1,37 +1,45 @@
-const express = require('express');
-const fs = require('fs');
-const app = express();
-const PORT = process.env.PORT || 3000;
-const COMMENTS_FILE = 'comments.txt';
+document.getElementById("commentForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const commentInput = document.getElementById("commentInput").value;
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
-
-app.post('/comments', (req, res) => {
-  const comment = req.body.comment + '\n';
-  fs.appendFile(COMMENTS_FILE, comment, (err) => {
-    if (err) {
-      console.error('Error writing comment:', err);
-      res.status(500).send('Error al escribir el comentario');
-    } else {
-      console.log('Comentario escrito:', comment);
-      res.status(200).send('Comentario enviado correctamente');
-    }
+  // Enviar comentario al archivo 'comments.txt'
+  fetch("comments.txt", {
+    method: "POST",
+    body: JSON.stringify({ comment: commentInput })
+  })
+  .then(response => response.text())
+  .then(data => {
+    console.log(data);
+    loadComments();
+  })
+  .catch(error => {
+    console.error("Error al enviar comentario:", error);
   });
 });
 
-app.get('/comments', (req, res) => {
-  fs.readFile(COMMENTS_FILE, 'utf8', (err, data) => {
-    if (err) {
-      console.error('Error reading comments:', err);
-      res.status(500).send('Error al leer los comentarios');
-    } else {
-      const comments = data.split('\n').filter(comment => comment.trim() !== '');
-      res.json({ comments });
-    }
-  });
-});
 
-app.listen(PORT, () => {
-  console.log(`Servidor iniciado en el puerto ${PORT}`);
-});
+function loadComments() {
+  // Solicitar comentarios directamente desde el archivo 'comments.txt'
+  fetch("comments.txt")
+    .then(response => response.text())
+    .then(data => {
+      // Dividir el texto en líneas y filtrar las líneas vacías
+      const comments = data.split("\n").filter(comment => comment.trim() !== "");
+      // Mostrar los comentarios en el DOM
+      const commentList = document.getElementById("commentList");
+      commentList.innerHTML = "";
+      comments.forEach(comment => {
+        const p = document.createElement("p");
+        p.textContent = comment;
+        commentList.appendChild(p);
+      });
+    })
+    .catch(error => {
+      console.error("Error al cargar los comentarios:", error);
+    });
+}
+
+
+
+// Cargar comentarios al cargar la página
+window.addEventListener("load", loadComments);
