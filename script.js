@@ -2,8 +2,8 @@ document.getElementById("commentForm").addEventListener("submit", function(event
   event.preventDefault();
   const commentInput = document.getElementById("commentInput").value;
 
-  // Enviar comentario al archivo 'comments.txt'
-  fetch("comments.txt", {
+  // Enviar comentario al archivo 'comments.txt' en GitHub
+  fetch("https://raw.githubusercontent.com/tu_usuario/tu_repositorio/main/comments.txt", {
     method: "POST",
     body: JSON.stringify({ comment: commentInput })
   })
@@ -17,10 +17,9 @@ document.getElementById("commentForm").addEventListener("submit", function(event
   });
 });
 
-
 function loadComments() {
-  // Solicitar comentarios directamente desde el archivo 'comments.txt'
-  fetch("comments.txt")
+  // Solicitar comentarios directamente desde el archivo 'comments.txt' en GitHub
+  fetch("https://raw.githubusercontent.com/tu_usuario/tu_repositorio/main/comments.txt")
     .then(response => response.text())
     .then(data => {
       // Dividir el texto en líneas y filtrar las líneas vacías
@@ -38,8 +37,6 @@ function loadComments() {
       console.error("Error al cargar los comentarios:", error);
     });
 }
-
-
 
 // Cargar comentarios al cargar la página
 window.addEventListener("load", loadComments);
