@@ -2,11 +2,8 @@ document.getElementById("commentForm").addEventListener("submit", function(event
   event.preventDefault();
   const commentInput = document.getElementById("commentInput").value;
 
-  // Enviar comentario al archivo 'comments.txt' en GitHub
-  fetch("https://raw.githubusercontent.com/chrisgcxi/hoguera/main/comments.txt", {
-    method: "POST",
-    body: JSON.stringify({ comment: commentInput })
-  })
+// Enviar comentario al archivo 'comments.txt' utilizando GET en lugar de POST
+fetch("comments.txt?comment=" + encodeURIComponent(commentInput))
   .then(response => response.text())
   .then(data => {
     console.log(data);
@@ -15,7 +12,6 @@ document.getElementById("commentForm").addEventListener("submit", function(event
   .catch(error => {
     console.error("Error al enviar comentario:", error);
   });
-});
 
 function loadComments() {
   // Solicitar comentarios directamente desde el archivo 'comments.txt' en GitHub
