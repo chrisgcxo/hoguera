@@ -15,6 +15,4 @@ function loadComments() {	function loadComments() {
     .then(response => response.json())	    .then(response => response.json())
     .then(data => {	    .then(data => {
       const comments = data.comments;	      const comments = data.comments;
-0 comments on commit b8de1bb
-@chrisgcxo
-Comment
+
