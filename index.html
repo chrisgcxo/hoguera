@@ -6,10 +6,11 @@
     <title>Hoguera de Comentarios</title>
 </head>
 <body>
-    <form id="commentForm">
-        <input type="text" id="commentInput" placeholder="Escribe tu comentario">
-        <button type="submit">Enviar</button>
-    </form>
+   <form id="commentForm" action="http://localhost:3000/comments" method="POST">
+    <input type="text" id="commentInput" name="comment" placeholder="Escribe tu comentario">
+    <button type="submit">Enviar</button>
+</form>
+
     <div id="commentList"></div>
     <script src="script.js"></script>
 </body>
