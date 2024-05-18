@@ -2,7 +2,7 @@ document.getElementById("commentForm").addEventListener("submit", function(event
   event.preventDefault();
   const commentInput = document.getElementById("commentInput").value;
 
-  fetch("/comments", {
+  fetch("http://localhost:3000/comments", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -20,7 +20,7 @@ document.getElementById("commentForm").addEventListener("submit", function(event
 });
 
 function loadComments() {
-  fetch("/comments")
+  fetch("http://localhost:3000/comments")
     .then(response => response.json())
     .then(data => {
       const comments = data.comments;
