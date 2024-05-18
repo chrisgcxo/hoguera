@@ -2,7 +2,7 @@ document.getElementById("commentForm").addEventListener("submit", function(event
   event.preventDefault();
   const commentInput = document.getElementById("commentInput").value;
 
-  fetch("http://localhost:3000/comments.txt", {
+  fetch("http://localhost:3000/comments", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
