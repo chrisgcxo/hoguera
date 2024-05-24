@@ -8,7 +8,7 @@ document.getElementById("commentForm").addEventListener("submit", function(event
         return; // Detener la ejecución de la función si el comentario está vacío
     }
 //cada vez que se prenda hay que pegar el codigo del ngrok 
-    fetch(" https://f369-186-57-5-35.ngrok-free.app/comments", {
+    fetch(" https://f369-186-57-5-35.ngrok-free.app/ comments", {
          
         method: "POST",
         headers: {
