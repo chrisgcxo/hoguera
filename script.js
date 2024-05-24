@@ -7,8 +7,9 @@ document.getElementById("commentForm").addEventListener("submit", function(event
         alert("Por favor, escribe un comentario antes de enviar.");
         return; // Detener la ejecución de la función si el comentario está vacío
     }
-
-    fetch("https://c53a-186-57-5-35.ngrok-free.app/comments", {
+//cada vez que se prenda hay que pegar el codigo del ngrok 
+    fetch("https://fb5f-186-57-5-35.ngrok-free.app /comments", {
+         
         method: "POST",
         headers: {
             "Content-Type": "application/json"
