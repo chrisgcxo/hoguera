@@ -1,6 +1,12 @@
 document.getElementById("commentForm").addEventListener("submit", function(event) {
     event.preventDefault();
-    const commentInput = document.getElementById("commentInput").value;
+    const commentInput = document.getElementById("commentInput").value.trim(); // Eliminar espacios en blanco al inicio y al final
+    
+    // Validar si el comentario está vacío
+    if (commentInput === "") {
+        alert("Por favor, escribe un comentario antes de enviar.");
+        return; // Detener la ejecución de la función si el comentario está vacío
+    }
 
     fetch("https://c53a-186-57-5-35.ngrok-free.app/comments", {
         method: "POST",
