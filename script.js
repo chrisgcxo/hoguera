@@ -2,7 +2,7 @@ document.getElementById("commentForm").addEventListener("submit", function(event
   event.preventDefault();
   const commentInput = document.getElementById("commentInput").value;
 
-  fetch("http://localhost:3000/comments", {
+  fetch("https://42df-186-57-5-35.ngrok-free.app/comments", { // Reemplaza esta URL con la URL pública generada por Ngrok
       method: "POST",
       headers: {
           "Content-Type": "application/json"
