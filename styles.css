@@ -1,7 +1,14 @@
 /* Estilos generales */
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #f2f2f2;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #020202;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 #commentForm {
@@ -9,33 +16,43 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: #fff;
+    background: linear-gradient(135deg, rgba(202, 123, 33, 0.9), rgba(112, 44, 0, 0.9));
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.7);
+    width: 90%;
+    max-width: 400px;
 }
 
 input[type="text"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #ca7b21;
     border-radius: 5px;
     box-sizing: border-box;
+    background-color: #0b0b0b;
+    color: #f1f1f1;
+    font-size: 16px;
+}
+
+input[type="text"]::placeholder {
+    color: #ca7b21;
 }
 
 button {
     width: 100%;
-    padding: 10px 20px;
+    padding: 12px 20px;
     cursor: pointer;
-    background-color: #007bff;
+    background-color: #ca7b21;
     color: #fff;
     border: none;
     border-radius: 5px;
+    font-size: 16px;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #ca5621;
 }
 
 /* Media Queries para dispositivos móviles */
@@ -47,6 +64,6 @@ button:hover {
 
     input[type="text"],
     button {
-        width: 90%;
+        width: 100%;
     }
 }
